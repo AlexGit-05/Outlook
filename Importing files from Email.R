@@ -19,9 +19,15 @@ ns <- OutApp$GetNamespace("MAPI")#retrieves the namespace of
 # Get the inbox folder
 inbox <- ns$GetDefaultFolder(6)
 #Choosing folder
-inbox <- inbox$folders("Folder 1")
+inbox <- inbox$Folders.Item("Folder 1")
 #the number 6 corresponds to the inbox folder, 
 #the number 4 corresponds to the sent items folder
+
+# List all folders
+folders <- inbox$Folders
+for(i in 1:folders$Count()) {
+  print(folders.Item(i)$Name)
+}
 
 # Search for emails with the specific date in the inbox
 search_date <- "09/08/2021"
